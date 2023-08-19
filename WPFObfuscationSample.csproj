@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ArmDot.Client" Version="2023.11.0" />
+    <PackageReference Include="ArmDot.Engine.MSBuildTasks" Version="2023.11.0" />
+  </ItemGroup>
+
+    <Target Name="Protect" AfterTargets="AfterCompile" BeforeTargets="BeforePublish">
+        <ItemGroup>
+            <Assemblies Include="$(ProjectDir)$(IntermediateOutputPath)$(TargetFileName)" />
+        </ItemGroup>
+        <ArmDot.Engine.MSBuildTasks.ObfuscateTask
+        Inputs="@(Assemblies)"
+        ReferencePaths="@(_ResolveAssemblyReferenceResolvedFiles->'%(RootDir)%(Directory)')"
+        SkipAlreadyObfuscatedAssemblies="true"
+    />
+    </Target>
+    
+</Project>
