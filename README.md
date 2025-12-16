@@ -1,1 +1,1 @@
-This is a project designed to demonstrate the process of [obfuscating WPF applications](https://www.armdot.com/blog/2023/08/19/net-obfuscator-for-wpf/).
+This is a project designed to demonstrate the process of [obfuscating WPF applications](https://www.softanics.com/blog/armdot/net-obfuscator-for-wpf).
